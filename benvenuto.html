@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benvenuto su AvvoPro</title>
+<meta name="description" content="Il tuo profilo è stato creato — scegli come iniziare.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+
+  <header style="display:flex;align-items:center;justify-content:center;padding:22px 48px;border-bottom:1px solid var(--line);background:var(--paper-raised);">
+    <a href="index.html" class="brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9c7a3c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 7l-3 6a3.5 3.5 0 0 0 7 0L7 7M18 7l-3 6a3.5 3.5 0 0 0 7 0L19 7M6 7h1.5M17.5 7H19M8 21h8M4 7l8-3 8 3"></path></svg>
+      <span style="font-family:'Newsreader';font-weight:600;font-size:21px;color:var(--toga-deep);">AvvoPro</span></a>
+  </header>
+
+  <main style="max-width:900px;margin:0 auto;padding:64px 40px 72px;text-align:center;">
+
+    <div style="width:56px;height:56px;border-radius:50%;background:var(--good-tint);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3f6b4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>
+    </div>
+    <h1 style="font-size:30px;margin-bottom:12px;">Profilo creato, Avv. Bellini</h1>
+    <p style="font-size:15.5px;color:var(--ink-soft);max-width:52ch;margin:0 auto 48px;">Stiamo verificando la tua iscrizione all'Ordine di Milano — andrà online entro 48h. Nel frattempo, scegli come iniziare.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px;margin:0 auto 28px;">
+
+      <div class="card" style="padding:28px;text-align:left;">
+        <p style="font-size:17px;font-weight:600;margin-bottom:6px;">Plus</p>
+        <p style="font-size:13px;color:var(--ink-faint);margin-bottom:16px;">Per lo studio individuale attivo</p>
+        <p class="mono" style="font-size:26px;font-weight:600;color:var(--toga-deep);margin-bottom:20px;">€49<span style="font-size:13.5px;font-weight:500;color:var(--ink-faint);">/mese</span></p>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px;color:var(--ink-soft);margin-bottom:22px;">
+          <div style="display:flex;gap:8px;"><svg class="check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3f6b4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Messaggi privati illimitati</div>
+          <div style="display:flex;gap:8px;"><svg class="check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3f6b4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Priorità nella tua materia</div>
+        </div>
+        <a href="app/abbonamento.html" class="btn-outline" style="width:100%;">Scegli Plus</a>
+      </div>
+
+      <div class="card" style="padding:28px;text-align:left;border-color:var(--toga);border-width:2px;position:relative;">
+        <span class="badge" style="background:var(--toga);color:#fff;position:absolute;top:-12px;left:28px;">Consigliato</span>
+        <p style="font-size:17px;font-weight:600;margin-bottom:6px;margin-top:6px;">Pro</p>
+        <p style="font-size:13px;color:var(--ink-faint);margin-bottom:16px;">Per studi associati e S.t.A.</p>
+        <p class="mono" style="font-size:26px;font-weight:600;color:var(--toga-deep);margin-bottom:20px;">€129<span style="font-size:13.5px;font-weight:500;color:var(--ink-faint);">/mese</span></p>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px;color:var(--ink-soft);margin-bottom:22px;">
+          <div style="display:flex;gap:8px;"><svg class="check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3f6b4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Posizionamento prioritario per zona</div>
+          <div style="display:flex;gap:8px;"><svg class="check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3f6b4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Mini-CRM e promemoria automatici</div>
+        </div>
+        <a href="app/abbonamento.html" class="btn-primary" style="width:100%;">Scegli Pro</a>
+      </div>
+
+    </div>
+
+    <a href="app/dashboard.html" style="font-size:14px;font-weight:600;color:var(--ink-faint);">Continua con il piano Base, gratuito →</a>
+
+  </main>
+
+</div>
+
+</body>
+</html>
