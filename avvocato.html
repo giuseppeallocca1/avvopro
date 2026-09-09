@@ -12,18 +12,25 @@
 <body>
 <div class="page">
 
-  <header style="display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--line);background:var(--paper-raised);">
+  <header class="site-header">
     <a href="index.html" class="brand">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9c7a3c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 7l-3 6a3.5 3.5 0 0 0 7 0L7 7M18 7l-3 6a3.5 3.5 0 0 0 7 0L19 7M6 7h1.5M17.5 7H19M8 21h8M4 7l8-3 8 3"></path></svg>
       <span style="font-family:'Newsreader';font-weight:600;font-size:21px;color:var(--toga-deep);">AvvoPro</span></a>
-    <nav style="display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:500;color:var(--ink-soft);">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+    <label for="nav-toggle" class="menu-toggle" aria-label="Apri il menu">
+      <svg class="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </label>
+    <nav class="nav-panel">
+      <div class="nav-links">
       <a href="risultati.html" class="current">Trova un avvocato</a>
       <a href="domanda.html">Fai una domanda</a>
-    </nav>
-    <div style="display:flex;align-items:center;gap:16px;">
+    </div>
+      <div class="nav-actions">
       <a href="#" style="font-size:14.5px;font-weight:600;color:var(--ink);">Accedi</a>
       <a href="registrati.html" class="btn-primary" style="padding:11px 20px;font-size:14px;">Registra il tuo studio</a>
     </div>
+    </nav>
   </header>
 
   <div style="max-width:1080px;margin:0 auto;padding:12px 40px 16px;font-size:13px;color:var(--ink-faint);">
@@ -147,9 +154,9 @@
 
   </main>
 
-  <footer style="border-top:1px solid var(--line);background:var(--paper-raised);padding:48px 48px 26px;">
-    <div style="max-width:1180px;margin:0 auto;">
-      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:36px;">
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
         <div>
           <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px;">
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9c7a3c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 7l-3 6a3.5 3.5 0 0 0 7 0L7 7M18 7l-3 6a3.5 3.5 0 0 0 7 0L19 7M6 7h1.5M17.5 7H19M8 21h8M4 7l8-3 8 3"></path></svg>
@@ -159,7 +166,7 @@
         </div>
         <div>
           <p style="font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);font-weight:700;margin-bottom:14px;">Per chi cerca un avvocato</p>
-          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;">
+          <div class="footer-links">
             <a href="risultati.html">Trova un avvocato</a>
             <a href="domanda.html">Fai una domanda</a>
             <a href="faq.html">Domande frequenti</a>
@@ -167,27 +174,27 @@
         </div>
         <div>
           <p style="font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);font-weight:700;margin-bottom:14px;">Per gli avvocati</p>
-          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;">
+          <div class="footer-links">
             <a href="registrati.html">Registra il tuo studio</a>
             <a href="#" style="color:var(--ink-soft);">Accedi</a>
           </div>
         </div>
         <div>
           <p style="font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);font-weight:700;margin-bottom:14px;">Azienda</p>
-          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;">
+          <div class="footer-links">
             <a href="chi-siamo.html">Chi siamo</a>
             <a href="#" style="color:var(--ink-soft);">Contatti</a>
           </div>
         </div>
       </div>
-      <div style="border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <div class="footer-bottom">
         <span style="font-size:12.5px;color:var(--ink-faint);">© AvvoPro</span>
-        <div style="display:flex;gap:20px;font-size:12.5px;">
+        <div class="footer-legal">
           <a href="#" style="color:var(--ink-faint);">Termini di servizio</a>
           <a href="#" style="color:var(--ink-faint);">Privacy</a>
         </div>
       </div>
-      <p style="font-size:12px;color:var(--ink-faint);text-align:center;margin-top:18px;">Le risposte hanno finalità informativa generale e non costituiscono parere legale vincolante.</p>
+      <p class="footer-disclaimer">Le risposte hanno finalità informativa generale e non costituiscono parere legale vincolante.</p>
     </div>
   </footer>
 

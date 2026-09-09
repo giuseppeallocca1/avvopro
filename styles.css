@@ -29,14 +29,23 @@ img,svg{max-width:100%;}
 .btn-outline:hover{background:var(--toga-tint);}
 
 /* header / footer */
-.site-header{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--line);background:var(--paper-raised);}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.site-header{position:relative;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--line);background:var(--paper-raised);}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none;}
 .brand span{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:21px;color:var(--toga-deep);}
-.site-nav{display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:500;color:var(--ink-soft);}
-.site-nav a{color:var(--ink-soft);}
-.site-nav a.current{color:var(--ink);font-weight:600;}
-.header-actions{display:flex;align-items:center;gap:16px;}
-.header-actions a.login{font-size:14.5px;font-weight:600;color:var(--ink);}
+
+.nav-toggle-input{position:absolute;opacity:0;pointer-events:none;}
+.menu-toggle{display:none;align-items:center;justify-content:center;width:40px;height:40px;flex:none;cursor:pointer;border-radius:8px;}
+.menu-toggle:hover{background:var(--toga-tint);}
+.menu-toggle .icon-close{display:none;}
+.nav-toggle-input:checked ~ .menu-toggle .icon-open{display:none;}
+.nav-toggle-input:checked ~ .menu-toggle .icon-close{display:block;}
+
+.nav-panel{display:flex;flex:1;align-items:center;justify-content:space-between;margin:0 32px;min-width:0;}
+.nav-links{display:flex;align-items:center;gap:34px;font-size:14.5px;font-weight:500;}
+.nav-links a{color:var(--ink-soft);}
+.nav-links a.current{color:var(--ink);font-weight:600;}
+.nav-actions{display:flex;align-items:center;gap:16px;flex:none;}
+.nav-login{font-size:14.5px;font-weight:600;color:var(--ink);}
 
 .site-footer{border-top:1px solid var(--line);background:var(--paper-raised);padding:48px 48px 26px;}
 .footer-inner{max-width:1180px;margin:0 auto;}
@@ -102,13 +111,65 @@ img,svg{max-width:100%;}
 .page{width:100%;max-width:1440px;margin:0 auto;background:var(--paper);}
 
 @media (max-width: 900px){
-  .site-header{padding:14px 20px;flex-wrap:wrap;gap:12px;}
-  .site-nav{order:3;width:100%;gap:22px;}
+  body{font-size:15px;}
+  .site-header{padding:14px 20px;}
+  .menu-toggle{display:flex;}
+  .nav-panel{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper-raised);border-bottom:1px solid var(--line);box-shadow:0 16px 28px -16px rgba(24,29,26,.22);flex-direction:column;align-items:stretch;margin:0;padding:6px 20px 22px;gap:0;z-index:40;}
+  .nav-toggle-input:checked ~ .nav-panel{display:flex;}
+  .nav-links{flex-direction:column;align-items:stretch;gap:0;font-size:16px;}
+  .nav-links a{padding:14px 2px;border-bottom:1px solid var(--line);}
+  .nav-actions{flex-direction:column;align-items:stretch;gap:10px;padding-top:16px;}
+  .nav-actions .btn-primary,.nav-actions .btn-outline{width:100%;padding-top:14px;padding-bottom:14px;}
+  .nav-login{text-align:center;padding:6px 0;}
+
   main{padding-left:20px !important;padding-right:20px !important;}
-  .footer-grid{grid-template-columns:1fr 1fr;}
-  [style*="grid-template-columns:repeat(3"],[style*="grid-template-columns: repeat(3"]{grid-template-columns:1fr !important;}
-  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
-  [style*="grid-template-columns:240px"],[style*="grid-template-columns:1.4fr"],[style*="grid-template-columns:1.3fr"],[style*="grid-template-columns:1.7fr"],[style*="grid-template-columns:1fr 1.05fr"]{grid-template-columns:1fr !important;}
-  .app-sidebar{width:100%;border-right:none;border-bottom:1px solid var(--line);}
+  h1{font-size:28px !important;}
+
+  .footer-grid{grid-template-columns:1fr;gap:28px;}
+  .site-footer{padding:40px 20px 24px;}
+
+  /* every two/three/four/five-column layout collapses to something that fits a phone.
+     minmax(0,1fr), not bare 1fr: a grid track still respects a child's min-content
+     width by default, so unbreakable content (a button, a long label) silently
+     forces the track — and the whole page — wider than the viewport otherwise. */
+  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:minmax(0,1fr) !important;}
+  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+  [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:12px !important;}
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:minmax(0,1fr) !important;}
+  [style*="grid-template-columns:240px 1fr"]{grid-template-columns:minmax(0,1fr) !important;}
+  [style*="grid-template-columns:1.7fr 1fr"]{grid-template-columns:minmax(0,1fr) !important;}
+  [style*="grid-template-columns:1.3fr 1fr"]{grid-template-columns:minmax(0,1fr) !important;}
+  [style*="grid-template-columns:1fr 1.05fr"]{grid-template-columns:minmax(0,1fr) !important;}
+
+  /* the risultati.html sidebar loses its sticky offset once it's stacked above the results */
+  aside.card[style*="position:sticky"]{position:static !important;}
+
+  /* a name/title next to a flex:none action button: let the button drop to its own
+     line instead of holding the row open past the viewport width */
+  [style*="justify-content:space-between;align-items:flex-start"]{flex-wrap:wrap !important; row-gap:10px !important;}
+
+  /* same min-content trap as the grid tracks above, but for flex: a flex:1 item
+     (the text column next to a fixed-width avatar, an icon, a sidebar) won't
+     shrink past its content's natural width unless told it's allowed to */
+  [style*="flex:1;"]{min-width:0 !important;}
+
+  /* rows of nowrap badges/tags: wrap them instead of pushing the page wider */
+  [style*="display:flex;gap:8px;"],[style*="display:flex;gap:10px;flex-wrap:wrap"]{flex-wrap:wrap !important;}
+
+  /* hero and compact search bars: stack the fields instead of squeezing them */
+  [style*="border-radius:12px;padding:8px;box-shadow"]{flex-direction:column !important; gap:8px !important; padding:10px !important;}
+  [style*="border-radius:12px;padding:8px;box-shadow"] > div{border-right:none !important; border-bottom:1px solid var(--line); padding:10px 12px !important;}
+  [style*="border-radius:12px;padding:8px;box-shadow"] > a{padding:13px !important;}
+  [style*="border-radius:10px;padding:6px;max-width:640px"]{flex-direction:column !important; gap:8px !important; padding:8px !important; max-width:100% !important;}
+  [style*="border-radius:10px;padding:6px;max-width:640px"] > div{border-right:none !important; border-bottom:1px solid var(--line); padding:10px 12px !important;}
+  [style*="border-radius:10px;padding:6px;max-width:640px"] > div:last-of-type{padding:13px !important; justify-content:center !important;}
+
+  /* comparison table: keep its columns, let it scroll sideways instead of collapsing into nonsense */
+  [style*="overflow:hidden;background:var(--paper-raised)"]{overflow-x:auto !important;}
+  [style*="grid-template-columns:2fr 1fr 1fr 1fr"]{min-width:520px;}
+
+  .app-sidebar{width:100%;border-right:none;border-bottom:1px solid var(--line);flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:14px 20px;}
+  .app-nav{flex-direction:row;flex-wrap:wrap;gap:6px;}
   .app-shell{flex-direction:column;}
+  .app-main{padding:24px 20px 40px;}
 }
